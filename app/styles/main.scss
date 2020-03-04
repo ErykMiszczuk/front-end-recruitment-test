@@ -19,8 +19,9 @@ Note: any .css or .scss files included in the 'styles' directory
 will be correctly compiled during `gulp serve` and `gulp`
  */
 
-html, body {
-  font-family: 'Roboto', 'Helvetica', sans-serif;
+html,
+body {
+  font-family: "Roboto", "Helvetica", sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -87,7 +88,7 @@ html, body {
   color: inherit;
 }
 .mdl-demo .mdl-card__actions a {
-  color: #00BCD4;
+  color: #00bcd4;
   margin: 0;
 }
 .mdl-demo .mdl-card__actions a:hover,
@@ -115,7 +116,7 @@ html, body {
 .mdl-demo #features section.section--center {
   max-width: 620px;
 }
-.mdl-demo section > header{
+.mdl-demo section > header {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -152,7 +153,10 @@ html, body {
 .mdl-demo section .section__text a {
   text-decoration: none;
 }
-.mdl-demo section .section__circle-container > .section__circle-container__circle {
+.mdl-demo
+  section
+  .section__circle-container
+  > .section__circle-container__circle {
   width: 64px;
   height: 64px;
   border-radius: 32px;
@@ -175,7 +179,7 @@ html, body {
   margin: 0 -8px -8px -8px;
 }
 .mdl-demo section.section--center .section__text:not(:last-child) {
-  border-bottom: 1px solid rgba(0,0,0,.13);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.13);
 }
 .mdl-demo .mdl-card .mdl-card__supporting-text > h3:first-child {
   margin-bottom: 24px;
@@ -186,11 +190,12 @@ html, body {
 .mdl-demo #features section {
   margin-bottom: 72px;
 }
-.mdl-demo #features h4, #features h5 {
+.mdl-demo #features h4,
+#features h5 {
   margin-bottom: 16px;
 }
 .mdl-demo .toc {
-  border-left: 4px solid #C1EEF4;
+  border-left: 4px solid #c1eef4;
   margin: 24px;
   padding: 0;
   padding-left: 8px;
@@ -202,7 +207,7 @@ html, body {
   margin-top: 0;
 }
 .mdl-demo .toc a {
-  color: #4DD0E1;
+  color: #4dd0e1;
   text-decoration: none;
   font-size: 16px;
   line-height: 28px;
@@ -210,4 +215,150 @@ html, body {
 }
 .mdl-demo .mdl-menu__container {
   z-index: 99;
+}
+
+.section__checkout {
+  background-color: whitesmoke;
+}
+
+.section_label {
+  display: flex;
+  align-items: center;
+}
+
+.section_label__text {
+  margin-right: 0.5em;
+}
+
+.section_label__number {
+  display: block;
+  width: 1.35em;
+  background-color: black;
+  color: whitesmoke;
+  border-radius: 100%;
+  text-align: center;
+  margin-right: 1em;
+}
+
+.section_label__icon {
+  font-size: 16px;
+}
+
+@mixin styled-block($color) {
+  background-color: $color;
+  padding: 0.25em 0.5em 0.25em 0.5em;
+  border-radius: 0.4em;
+  box-shadow: 0px 2px 0px
+    adjust-color($color: $color, $lightness: -15%, $alpha: 1);
+}
+
+$neutral: #fff;
+$accept: #46b61d;
+$border: 2px dashed #d9d9d9;
+
+.checkout_form__input_block {
+  @include styled-block($neutral);
+  position: relative;
+}
+
+.input_block__label {
+  display: block;
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
+.input_block__input {
+  width: 97%;
+  padding: 0;
+  border: 0px solid transparent;
+}
+
+.checkout__submit_order {
+  @include styled-block($accept);
+  border: 0px solid transparent;
+  color: $neutral;
+  padding: 1em;
+  font-weight: bold;
+}
+
+.personal_information__form,
+.payment_details__form {
+  padding-left: 1.25em;
+}
+
+.checkout__submit_order {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submit_order__label {
+  margin-right: 0.5em;
+}
+
+.submit_order__icon {
+  font-size: 16px;
+}
+
+.checkout__border {
+  @include styled_block($neutral);
+  padding: 0.5em;
+  margin-top: 2.55em;
+}
+
+.checkout_summary {
+  border: $border;
+  padding: 0.5em;
+}
+
+.checkout_summary__header {
+  font-weight: bold;
+}
+
+.checkout_summary__items_list,
+.checkout_summary__tax {
+  list-style-type: none;
+  padding: 1em 0 0 0;
+  border-top: $border;
+}
+
+.items_list__entry {
+  display: flex;
+}
+
+.entry__name {
+  flex: 1;
+}
+
+.checkout_summary__total {
+  font-weight: bold;
+  display: flex;
+  align-items: flex-start;
+  border-top: $border;
+  padding-top: 1em;
+}
+
+.total__label {
+  flex: 1;
+}
+
+.total__amount {
+  font-size: 2.5em;
+  flex-grow: 0;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.input__credit_card_icon {
+  font-size: 16px;
+}
+
+.icon_border {
+  position: absolute;
+  top: 24%;
+  right: 2%;
+  border: 1px solid black;
+  display: flex;
+  padding: 0.25em;
+  border-radius: 5px;
 }
