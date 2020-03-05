@@ -25,20 +25,22 @@
   // service worker from an insecure origin will trigger JS console errors. See
   // http://www.chromium.org/Home/chromium-security/prefer-secure-origins-for-powerful-new-features
 
-  const isLocalhost = Boolean(window.location.hostname === 'localhost' ||
-    // [::1] is the IPv6 localhost address.
-    window.location.hostname === '[::1]' ||
-    // 127.0.0.1/8 is considered localhost for IPv4.
-    window.location.hostname.match(
-      /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
-    )
+  const isLocalhost = Boolean(
+    window.location.hostname === 'localhost' ||
+      // [::1] is the IPv6 localhost address.
+      window.location.hostname === '[::1]' ||
+      // 127.0.0.1/8 is considered localhost for IPv4.
+      window.location.hostname.match(
+        /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
+      )
   );
 
   if (
-    'serviceWorker' in navigator
-    && (window.location.protocol === 'https:' || isLocalhost)
+    'serviceWorker' in navigator &&
+    (window.location.protocol === 'https:' || isLocalhost)
   ) {
-    navigator.serviceWorker.register('service-worker.js')
+    navigator.serviceWorker
+      .register('service-worker.js')
       .then(function(registration) {
         // updatefound is fired if service-worker.js changes.
         registration.onupdatefound = function() {
@@ -61,19 +63,75 @@
                 break;
 
               case 'redundant':
-                throw new Error('The installing ' +
-                    'service worker became redundant.');
+                throw new Error(
+                  'The installing ' + 'service worker became redundant.'
+                );
 
               default:
-                  // Ignore
+                // Ignore
               }
             };
           }
         };
-      }).catch(function(e) {
+      })
+      .catch(function(e) {
         console.error('Error during service worker registration:', e);
       });
   }
 
   // Your custom JavaScript goes here
+
+  // Checkout validation
+  const checkoutForm = document.querySelector('.section__checkout');
+  const listOfInputs = Array.from(checkoutForm.querySelectorAll('input'));
+  const checkoutButton = document.querySelector('.checkout__submit_order');
+
+  checkoutButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    let validationPassed = false;
+    listOfInputs.map((input) => {
+      const pattern = input.getAttribute('pattern');
+      const errorText = input.getAttribute('title');
+      const inputValue = input.value;
+      const errorShown = input.parentElement.querySelector('.error__text')
+        ? true
+        : false;
+      const regex = new RegExp(pattern);
+      const regexTest = inputValue.match(regex);
+      let regexTestResult = false;
+
+      // Regexp can return null or empty string using match so we need to reduce output to true or false
+      if (regexTest == null) {
+        regexTestResult = false;
+      } else {
+        // if match returns empty string
+        if (regexTest[0].length == 0) {
+          regexTestResult = false;
+        } else {
+          regexTestResult = true;
+        }
+      }
+
+      if (regexTestResult == false && errorShown == false) {
+        const span = document.createElement('span');
+        span.textContent = errorText;
+        span.classList.add('error__text');
+        input.parentElement.append(span);
+        validationPassed = false;
+      } else if (regexTestResult == false && errorShown == true) {
+        validationPassed = false;
+      } else if (regexTestResult == true && errorShown == true) {
+        const errorElement = input.parentElement.querySelector('.error__text');
+        input.parentElement.removeChild(errorElement);
+        validationPassed = true;
+      } else {
+        validationPassed = true;
+      }
+    });
+    if (validationPassed) {
+      alert('You ve got this');
+    } else {
+      alert('Some errors occured');
+    }
+  });
 })();

@@ -241,27 +241,27 @@
                   <div class="personal_information__form checkout_form mdl-grid">
                     <div class="checkout_form__input_block mdl-cell mdl-cell--6-col">
                       <label for="firstName" class="input_block__label">First Name</label>
-                      <input type="text" name="firstName" id="firstName" class="input_block__input" placeholder="Elon">
+                      <input type="text" name="firstName" id="firstName" class="input_block__input" placeholder="Elon" pattern="[A-Za-z]+" title="First name can contains only big and small leters">
                     </div>
                     <div class="checkout_form__input_block mdl-cell mdl-cell--6-col">
                       <label for="lastName" class="input_block__label">Last Name</label>
-                      <input type="text" name="lastName" id="lastName" class="input_block__input" placeholder="Musk">
+                      <input required type="text" name="lastName" id="lastName" class="input_block__input" placeholder="Musk" pattern="[A-Za-z]+" title="Last name can contains only big and small leters">
                     </div>
                     <div class="checkout_form__input_block mdl-cell mdl-cell--12-col">
                       <label for="email" class="input_block__label">Email</label>
-                      <input type="email" name="email" id="email" class="input_block__input" placeholder="elon@spacex.com">
+                      <input required type="email" name="email" id="email" class="input_block__input" placeholder="elon@spacex.com" pattern="[A-Za-z0-9.]+@[A-Za-z.]+" title="You can type only email adresses">
                     </div>
                     <div class="checkout_form__input_block mdl-cell mdl-cell--6-col">
                       <label for="contry" class="input_block__label">Contry</label>
-                      <input type="text" name="contry" id="contry" class="input_block__input" placeholder="USA">
+                      <input required type="text" name="contry" id="contry" class="input_block__input" placeholder="USA" pattern="[A-Za-z]+" title="Country can contains only big and small leters">
                     </div>
                     <div class="checkout_form__input_block mdl-cell mdl-cell--6-col">
                       <label for="postalCode" class="input_block__label">Postal Code</label>
-                      <input type="text" name="postalCode" id="postalCode" class="input_block__input" placeholder="10001">
+                      <input required type="text" name="postalCode" id="postalCode" class="input_block__input" placeholder="10001" pattern="[0-9]{5}" title="5 digit postal code">
                     </div>
                     <div class="checkout_form__input_block mdl-cell mdl-cell--12-col">
                       <label for="phoneNumber" class="input_block__label">Phone Number</label>
-                      <input type="text" name="phoneNumber" id="phoneNumber" class="input_block__input" placeholder="(212) 692-93-92">
+                      <input required type="text" name="phoneNumber" id="phoneNumber" class="input_block__input" placeholder="(212) 692-93-92" pattern="\([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2}|\([0-9]{3}\) [0-9]{3}-[0-9]{2}-[0-9]{2}" title="Phone number should look like this (212) 692-93-92">
                     </div>
                   </div>
                 </section>
@@ -274,18 +274,18 @@
                   <div class="payment_details__form checkout_form mdl-grid">
                     <div class="checkout_form__input_block mdl-cell mdl-cell--12-col">
                       <label for="creditCardNumber" class="input_block__label ">Credit Card Number</label>
-                      <input type="text" name="creditCardNumber" id="creditCardNumber" class="input_block__input" placeholder="0000 - 0000 - 0000 - 0000">
+                      <input required type="text" name="creditCardNumber" id="creditCardNumber" class="input_block__input" placeholder="0000 - 0000 - 0000 - 0000" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" title="Credit card number should be separated by dashes">
                       <div class="icon_border">
                         <i class="material-icons input__credit_card_icon">payment</i>
                       </div>
                     </div>
                     <div class="checkout_form__input_block mdl-cell mdl-cell--6-col">
                       <label for="securityCode" class="input_block__label">Security Code</label>
-                      <input type="text" name="securityCode" id="securityCode" class="input_block__input" placeholder="0000">
+                      <input required type="text" name="securityCode" id="securityCode" class="input_block__input" placeholder="0000" pattern="[0-9]{4}" title="Security code">
                     </div>
                     <div class="checkout_form__input_block mdl-cell mdl-cell--6-col">
                       <label for="expirationDate" class="input_block__label">Expiration Date</label>
-                      <input type="text" name="expirationDate" id="expirationDate" class="input_block__input" placeholder="06/06">
+                      <input required type="text" name="expirationDate" id="expirationDate" class="input_block__input" placeholder="06/06" pattern="[0-9]{2}/[0-9]{2}" title="Card security number">
                     </div>
                     <button class="checkout__submit_order mdl-cell mdl-cell--12-col">
                       <span class="submit_order__label">Complete Purchase</span>

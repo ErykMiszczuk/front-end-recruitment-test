@@ -319,6 +319,9 @@ $border: 2px dashed #d9d9d9;
 .checkout_summary__tax {
   list-style-type: none;
   padding: 1em 0 0 0;
+}
+
+.checkout_summary__tax {
   border-top: $border;
 }
 
@@ -361,4 +364,8 @@ $border: 2px dashed #d9d9d9;
   display: flex;
   padding: 0.25em;
   border-radius: 5px;
+}
+
+.error__text {
+  color: rgb(220,20,60);
 }
